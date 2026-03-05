@@ -1,0 +1,71 @@
+CREATE DATABASE IF NOT EXISTS job_tracker;
+USE job_tracker;
+
+DROP TABLE IF EXISTS applications;
+
+CREATE TABLE applications (
+  id            INT AUTO_INCREMENT PRIMARY KEY,
+  company_name  VARCHAR(255) NOT NULL,
+  program       VARCHAR(255) NOT NULL,
+  job_url       TEXT,
+  job_type      ENUM('Intern', 'Fulltime', 'Contract', 'MT', 'Freelance') DEFAULT 'Intern',
+  referral      ENUM('LinkedIn', 'Jobstreet', 'Job Fair', 'Deals', 'Friends', 'Other') DEFAULT 'Other',
+  apply_date    DATE,
+  status        ENUM(
+                  'Submitted',
+                  'Emailed Back',
+                  'Assessment',
+                  'HR - Interview',
+                  'User - Interview',
+                  'LGD',
+                  'Presentation',
+                  'Offering',
+                  'Rejected',
+                  'Not Proceed',
+                  'Waiting'
+                ) DEFAULT 'Submitted',
+  notes         TEXT,
+  created_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+INSERT INTO applications (company_name, program, job_url, job_type, referral, apply_date, status, notes) VALUES
+('Indosat Ooredoo Hutchison', 'Internship Program', 'https://jobs.talentics.id/applications', 'Intern', 'LinkedIn', NULL, 'Rejected', NULL),
+('Prudential', 'Fulltime Position', 'https://www.linkedin.com/jobs/view/4238078961', 'Fulltime', 'LinkedIn', NULL, 'Rejected', NULL),
+('Vidio', 'Internship Program', 'https://dealls.com/loker/lamar-sekaligus?afterApplyTo=vidiodotcom', 'Intern', 'Deals', NULL, 'Rejected', NULL),
+('Bank Central Asia', 'Internship Program', 'https://dealls.com/loker/lamar-sekaligus?afterApplyTo=pt-bank-digital-bca-bca', 'Intern', 'Deals', NULL, 'Rejected', NULL),
+('GoTo', 'Internship Program', 'https://jobs.lever.co/GoToGroup/0eba2e93-3dbf-4479-a0ad-cfc35613beaf/thanks', 'Intern', 'Other', NULL, 'Rejected', NULL),
+('Tiket.com', 'ML Engineer Intern', 'https://www.linkedin.com/jobs/collections/recommended/?currentJobId=4206296313', 'Intern', 'LinkedIn', NULL, 'Rejected', NULL),
+('Flip.id', 'Data Engineer Intern', 'https://career.flip.id/jobs/gxsqx6SUZCDJ/data-engineer-intern', 'Intern', 'LinkedIn', NULL, 'Rejected', NULL),
+('TACI', 'General Application', NULL, 'Intern', 'Friends', NULL, 'Rejected', NULL),
+('Telkom Indonesia', 'AI Engineer Intern (PR159)', 'https://magenta.bumn.go.id/status-magang', 'Intern', 'Other', '2025-08-06', 'Rejected', NULL),
+('Toyota', 'Internship Program', 'https://career.toyota.co.id/career-solutions/dashboard', 'Intern', 'Other', NULL, 'Rejected', NULL),
+('LG', 'Internship Program', NULL, 'Intern', 'Other', NULL, 'Rejected', NULL),
+('Vidio', 'Internship Program (2nd)', 'https://dealls.com/loker/applied?jobApplicationId=6861f8eb754b490012874e8e', 'Intern', 'Deals', NULL, 'Rejected', NULL),
+('AIA', 'Internship Program', 'https://www.linkedin.com/my-items/saved-jobs/?cardType=APPLIED', 'Intern', 'LinkedIn', NULL, 'Rejected', NULL),
+('Allofresh', 'Internship Program', 'https://www.linkedin.com/jobs/view/4257212290/', 'Intern', 'LinkedIn', NULL, 'Rejected', NULL),
+('BCG', 'Internship Program', 'https://experiencedtalent.bcg.com/careerhub/explore/jobs/790303560882', 'Intern', 'Other', NULL, 'Rejected', NULL),
+('Beiersdorf', 'Internship Program', 'https://www.linkedin.com/jobs/collections/easy-apply/?currentJobId=4239900026', 'Intern', 'LinkedIn', NULL, 'Rejected', NULL),
+('FIF Group Astra', 'Internship Program', 'https://career.astra.co.id/account/history', 'Intern', 'LinkedIn', NULL, 'Rejected', NULL),
+('FIF Group Astra', 'Internship Program (2nd)', 'https://career.astra.co.id/account/history', 'Intern', 'LinkedIn', NULL, 'Rejected', NULL),
+('Astra (SERA)', 'Data Analyst Intern', 'https://career.astra.co.id/account/history', 'Intern', 'LinkedIn', NULL, 'Rejected', NULL),
+('Astra (FIF)', 'FIFASTRA Data Analytic Internship', 'https://career.astra.co.id/account/history', 'Intern', 'LinkedIn', NULL, 'Rejected', NULL),
+('Astra (SERA)', 'Data Scientist Intern', 'https://career.astra.co.id/account/history', 'Intern', 'LinkedIn', NULL, 'Rejected', NULL),
+('Paragon', 'Enterprise Transformation & Risk Management Intern', 'https://paragoncorp.darwinbox.com/ms/candidatev2/main/careers/myJobs/applied', 'Intern', 'Other', NULL, 'Rejected', NULL),
+('TikTok', 'Internship Program', 'https://lifeattiktok.com/position/application', 'Intern', 'Other', NULL, 'Rejected', NULL),
+('Seven Retails', 'Internship Program', 'https://www.linkedin.com/jobs/view/4230548422/', 'Intern', 'LinkedIn', NULL, 'Rejected', NULL),
+('Dealls Company', 'Business Analyst Intern', 'https://dealls.com/loker/applied?jobApplicationId=686cb1e5bf624e001235d31e', 'Intern', 'LinkedIn', NULL, 'Rejected', NULL),
+('Dealls Company', 'Talent Acquisition & Data Analytics Intern', 'https://dealls.com/loker/applied?jobApplicationId=686cb1e5bf624e001235d31e', 'Intern', 'LinkedIn', NULL, 'Rejected', NULL),
+('Arya Noble', 'Data Analyst Intern', 'https://dealls.com/loker/applied?jobApplicationId=686cb1e5bf624e001235d31e', 'Intern', 'LinkedIn', NULL, 'Rejected', NULL),
+('Astra', 'ML Engineer Intern', 'https://career.astra.co.id/account/history', 'Intern', 'Other', NULL, 'Rejected', NULL),
+('Bank Indonesia', 'Internship Program', NULL, 'Intern', 'Other', NULL, 'Offering', NULL),
+('Shopee', 'Management Trainee', NULL, 'MT', 'Other', NULL, 'Submitted', NULL),
+('Paragon', 'Management Trainee', NULL, 'MT', 'Other', NULL, 'Rejected', NULL),
+('Antam', 'Internship Program', NULL, 'Intern', 'Other', NULL, 'Not Proceed', NULL),
+('Transjakarta', 'Magang', 'https://karier.transjakarta.co.id/magang', 'Intern', 'Other', NULL, 'Submitted', NULL),
+('Toyota Astra', 'Internship / Fresh Graduate', 'https://recruitment.toyota.astra.co.id/home/freshgraduate', 'Intern', 'Other', NULL, 'Submitted', NULL),
+('JSI', 'Business Intelligence (Power BI) Internship', NULL, 'Intern', 'Other', NULL, 'Submitted', NULL),
+('Bank Mandiri', 'ODP IT', 'https://jobs.talentics.id/applications/5621732?hide=other-opportunities', 'MT', 'Other', NULL, 'Submitted', NULL),
+('Honda Astra', 'Management Trainee', 'https://jobs.talentics.id/applications/5621790', 'MT', 'Other', NULL, 'Submitted', NULL),
+('Telkom Indonesia', 'MAGENTA Internship', NULL, 'Intern', 'Other', NULL, 'Submitted', NULL),
+('Bank Central Asia', 'Wealth Management Program (WMP)', NULL, 'MT', 'Other', NULL, 'Submitted', NULL);
