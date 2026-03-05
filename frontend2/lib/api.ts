@@ -1,6 +1,17 @@
 import { Application, ApplicationFormData, Stats } from './types';
 
-const BASE_URL = '/api';
+const getBaseUrl = () => {
+    // Server-side: needs absolute URL
+    if (typeof window === 'undefined') {
+        const vercelUrl = process.env.NEXT_PUBLIC_VERCEL_URL;
+        if (vercelUrl) return `https://${vercelUrl}/api`;
+        return 'http://localhost:3000/api';
+    }
+    // Client-side: relative URL works fine
+    return '/api';
+};
+
+const BASE_URL = getBaseUrl();
 
 export interface GetApplicationsParams {
     status?: string;
