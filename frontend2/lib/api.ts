@@ -1,6 +1,6 @@
 import { Application, ApplicationFormData, Stats } from './types';
 
-const BASE_URL = 'http://localhost:3001/api';
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
 
 export interface GetApplicationsParams {
     status?: string;
