@@ -1,4 +1,4 @@
-import { getApplications } from '@/lib/api';
+import { getApplicationsFromDB } from '@/lib/queries';
 import { Application } from '@/lib/types';
 import ApplicationTable from '@/components/ApplicationTable';
 import FilterBar from '@/components/FilterBar';
@@ -16,7 +16,7 @@ export default async function ApplicationsPage({ searchParams }: PageProps) {
     let applications: Application[] = [];
 
     try {
-        applications = await getApplications({
+        applications = await getApplicationsFromDB({
             status: params.status,
             job_type: params.job_type,
             referral: params.referral,

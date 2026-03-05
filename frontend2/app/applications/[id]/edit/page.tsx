@@ -1,4 +1,4 @@
-import { getApplicationById } from '@/lib/api';
+import { getApplicationByIdFromDB } from '@/lib/queries';
 import ApplicationForm from '@/components/ApplicationForm';
 import { ApplicationFormData } from '@/lib/types';
 import Link from 'next/link';
@@ -14,10 +14,12 @@ export default async function EditApplicationPage({ params }: PageProps) {
 
     let app;
     try {
-        app = await getApplicationById(numId);
+        app = await getApplicationByIdFromDB(numId);
+        if (!app) notFound();
     } catch {
         notFound();
     }
+    if (!app) notFound();
 
     const initialData: ApplicationFormData = {
         company_name: app.company_name,

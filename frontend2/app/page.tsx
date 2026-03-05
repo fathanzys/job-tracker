@@ -1,4 +1,4 @@
-import { getStats, getApplications } from '@/lib/api';
+import { getStatsFromDB, getApplicationsFromDB } from '@/lib/queries';
 import StatCard from '@/components/StatCard';
 import StatusBadge from '@/components/StatusBadge';
 import JobTypeBadge from '@/components/JobTypeBadge';
@@ -13,8 +13,8 @@ export default async function DashboardPage() {
 
   try {
     [stats, recentApps] = await Promise.all([
-      getStats(),
-      getApplications(),
+      getStatsFromDB(),
+      getApplicationsFromDB(),
     ]);
   } catch {
     return (
