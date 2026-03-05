@@ -1,4 +1,5 @@
 import { getApplications } from '@/lib/api';
+import { Application } from '@/lib/types';
 import ApplicationTable from '@/components/ApplicationTable';
 import FilterBar from '@/components/FilterBar';
 import Link from 'next/link';
@@ -12,7 +13,7 @@ interface PageProps {
 
 export default async function ApplicationsPage({ searchParams }: PageProps) {
     const params = await searchParams;
-    let applications;
+    let applications: Application[] = [];
 
     try {
         applications = await getApplications({
